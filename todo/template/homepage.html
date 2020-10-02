@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="post" action="/addtask/">
+
+{%csrf_token %}
+    <input type = "text" name="task">
+    <input type="submit" value="Add" class="btn btn-success" name="">
+</form>
+{% for mytodo in mytodos %}
+<p>{{ mytodo.task}} <a href="/deletetask/{{mytodo.id}}/" class="btn btn-danger">Delete</a> <a href="/edittask/{{mytodo.id}}/"class="btn btn-warning">Edit</a></p>
+{% endfor %}
+
+{% endblock %}
